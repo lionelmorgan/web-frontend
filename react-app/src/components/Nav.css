@@ -1,27 +1,38 @@
 /* Navbar.css */
 
-.navbar {
-  background-color: black;
+.navbar-spider {
+  background-color: rgb(17, 17, 17);
   color: white;
   display: flex;
-  width: 100%;
+  width: 100vw; /* Use viewport width to fit the entire width */
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  position: relative; /* Add position relative to enable absolute positioning of dropdown */
+  position: relative; /* Keep for dropdown positioning */
+  left: 50%; /* Center the navbar */
+  transform: translateX(-50%); /* Adjust for centering */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
 
-.navbar-brand {
+.navbar-brand-spider {
   font-weight: bold;
 }
 
 #nav-title {
+  color: white;
+  margin-left: 20%;
   font-style: italic;
+  font-size: 1.5rem;
+}
+
+.navbar-toggle{
+  margin-right: 3%;
 }
 
 .navbar-toggle img {
   width: 45px;
   height: 45px; /* Adjust height for better visibility */
+  margin-bottom: 20s;
   cursor: pointer;
   border-radius: 50%;
   overflow: hidden;
@@ -62,4 +73,5 @@
 
 .dropdown-menu.show {
   display: block;
+  margin-left: 85%;
 }

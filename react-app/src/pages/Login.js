@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './Login.css';
 
-function LoginSignUp() {
-    const [username, setUsername] = useState('');
+//Defines a function to invoke on export to display the login and signup page
+function Login() {
+    const [username, setUsername] = useState(''); //use react's use state to set required form data
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [isLogin, setIsLogin] = useState(true);
 
     useEffect(() => {
-        const loginText = document.querySelector(".title.login");
+        const loginText = document.querySelector(".title.login"); //uses the document object to select the title class to translate
         const signupText = document.querySelector(".title.signup");
         const sliderTab = document.querySelector(".slider-tab");
 
@@ -23,6 +24,7 @@ function LoginSignUp() {
         }
     }, [isLogin]);
 
+    //Asynchronous function used to send post request to the api. The request contains the user login information 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -43,6 +45,7 @@ function LoginSignUp() {
         }
     };
 
+    //Asynchronous function used to send post request to the api. The request contains the user signup information 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
@@ -64,8 +67,9 @@ function LoginSignUp() {
         }
     };
 
+    //HTML elements are returned to the browser using react convention of return including the elements
     return (
-        <div className="container">
+        <div className="loginsignup-container">
             <div className="title-text">
                 <div className="title login">Login</div>
                 <div className="title signup">Signup</div>
@@ -78,15 +82,16 @@ function LoginSignUp() {
                     <label htmlFor="signup" className="slide signup">Signup</label>
                     <div className="slider-tab"></div>
                 </div>
+
                 <div className="form-inner">
                     {isLogin ? (
-                        <form className="login" onSubmit={handleLogin}>
+                        <form className="login" onSubmit={handleLogin}> 
                             <div className="field">
                                 <input
                                     type="text"
                                     placeholder="Username"
                                     value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    onChange={(e) => setUsername(e.target.value)} //sets user name using event and the value that was inserted in the form
                                     required
                                 />
                             </div>
@@ -95,7 +100,7 @@ function LoginSignUp() {
                                     type="password"
                                     placeholder="Password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => setPassword(e.target.value)} //sets the user's password using event and the value that was inserted in the form
                                     required
                                 />
                             </div>
@@ -111,7 +116,7 @@ function LoginSignUp() {
                             </div>
                         </form>
                     ) : (
-                        <form className="signup" onSubmit={handleSignup}>
+                        <form className="signup" onSubmit={handleSignup}> 
                             <div className="field">
                                 <input
                                     type="text"
@@ -151,4 +156,4 @@ function LoginSignUp() {
     );
 }
 
-export default LoginSignUp;
+export default Login;

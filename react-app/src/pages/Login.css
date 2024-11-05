@@ -8,7 +8,6 @@
 }
 
 html, body {
-  background-image: url('../images/city.JPG');
   background-size: cover;
   background-repeat: no-repeat;
   display: grid;
@@ -17,23 +16,26 @@ html, body {
   place-items: center;
 }
 
-.container {
+.loginsignup-container {
+
+  /* background-image: url('/Images/mar.jpg'); */
+  background-color: #000;
+  background-size: cover;
   overflow: hidden;
-  width: 750px; /* Increased width */
-  background: #1a1919;
+  width: 1000px; /* Increased width */
   opacity: 91%;
   padding: 40px; /* Increased padding */
   border-radius: 8px; /* Slightly rounded corners */
   box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
 }
 
-.container .title-text {
+.loginsignup-container .title-text {
   display: flex;
   width: 200%;
   color: #ffffff;
 }
 
-.container .title {
+.loginsignup-container .title {
   width: 50%;
   font-size: 40px; /* Increased title font size */
   font-weight: 600;
@@ -41,7 +43,7 @@ html, body {
   transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.container .slide-controls {
+.loginsignup-container .slide-controls {
   position: relative;
   display: flex;
   height: 60px; /* Increased height */
@@ -108,14 +110,15 @@ input[type="radio"] {
   user-select: none;
 }
 
-.container .form-container {
+.loginsignup-container .form-container {
   width: 100%;
   overflow: hidden;
 }
 
 .form-container .form-inner {
   display: flex;
-  width: 200%;
+  width: 180%;
+  margin-left: 90%;
 }
 
 .form-container .form-inner form {
@@ -132,6 +135,7 @@ input[type="radio"] {
 .form-inner form .field input {
   height: 100%;
   width: 100%;
+  color: white;
   outline: none;
   padding-left: 20px; /* Increased padding for better usability */
   border-radius: 5px;

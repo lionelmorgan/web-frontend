@@ -1,32 +1,35 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AddPost() {
-  const [description, setDescription] = useState('');
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const [userId, setUserId] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [imagePreview, setImagePreview] = useState('');
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const formData = new FormData();
-      formData.append('description', description);
+      formData.append('userId', userId);
+      formData.append('title', title);
+      formData.append('content', content);
       formData.append('image', image);
-  
+
       const response = await fetch('http://localhost:9000/api/addPost', {
         method: 'POST',
-        headers: {
-          // Remove 'Content-Type' header to let the browser handle multipart form data
-        },
         body: formData,
       });
-  
+
       if (response.ok) {
         console.log('Post added successfully');
-        // Redirect to home page
-        window.location.href = 'http://localhost:9000/api/home';
+        navigate('/home'); // Redirect to /home upon successful submission
       } else {
         console.error('Failed to add post');
-        alert("Failed to add post");
         setErrorMessage('Failed to add post. Please try again.');
       }
     } catch (error) {
@@ -35,30 +38,55 @@ function AddPost() {
     }
   };
 
+  const handleImageChange = (event) => {
+    const selectedImage = event.target.files[0];
+    if (selectedImage) {
+      setImage(selectedImage);
+      setImagePreview(URL.createObjectURL(selectedImage)); // Create a preview URL
+    }
+  };
+
   return (
     <div className="post-container">
       <form onSubmit={handleFormSubmit} className="post-form">
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <div className="post">
-          {image && (
-            <img className="post-image" src={URL.createObjectURL(image)} alt="Uploaded" />
+          {imagePreview && (
+            <img className="post-image" src={imagePreview} alt="Uploaded" />
           )}
           <div className="post-body">
-            <label htmlFor="description">Description:</label>
+            <input
+              type="number"
+              id="userId"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+              required
+              placeholder="User ID"
+            />
             <input
               type="text"
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              placeholder="Title"
             />
-            <label htmlFor="image">Image:</label>
+            <textarea
+              id="content"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+              placeholder="Content"
+            />
             <input
               type="file"
               id="image"
               accept="image/*"
-              onChange={(e) => setImage(e.target.files[0])}
+              onChange={handleImageChange}
+              required
+              placeholder="Image"
             />
-            <button type="submit">Post</button>
+            <button className="btn btn-primary"type="submit">Post</button>
           </div>
         </div>
       </form>

@@ -1,0 +1,103 @@
+/* Events.css */
+.events-container {
+    display: flex;
+}
+
+.events-main {
+    flex: 3;
+    margin-top: 3%;
+}
+
+#event-title{
+    text-align: center;
+}
+
+#event-title-side{
+    text-align: center;
+    color: white;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #f8f9fa; /* Light background for the sidebar */
+    padding: 3%;
+    border-left: 1px solid #ddd;
+    background: linear-gradient(to bottom, #000, #fff);
+}
+
+.sidebar-event {
+    margin-bottom: 15px;
+}
+
+.sidebar-event h4 {
+    margin: 0;
+}
+
+.sidebar-event p {
+    margin: 0;
+}
+
+.event-container {
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.event {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-weight: bold;
+    height: 500px;
+    width: 700px;
+    border-radius: 5%;
+    background-color: white;
+}
+
+.event-image {
+    height: 400px; /* Each image is now 25% smaller */
+    width: 100%; /* Width remains the same */
+    border-radius: 5%;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45px;
+    height: 45px; /* Adjust height for better visibility */
+    margin-right: 20%;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.event-item button {
+    height: 30%;
+    width: 100%;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 7%;
+    margin-bottom: 5%;
+    border-color: whitesmoke;
+}
+
+.event-item button:hover {
+    background-color: green;
+    color: whitesmoke;
+}
+
+#event-button{
+    width: 90%;
+    margin-top: 5%;
+}
+
+.row {
+    width: 400px;
+}
+
+.card-image img {
+    width: 250px;
+    height: 250px;
+}
